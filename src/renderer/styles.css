@@ -1,0 +1,252 @@
+* {
+
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  background: #020617;
+
+  color: white;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  overflow-x: hidden;
+
+}
+
+::-webkit-scrollbar {
+
+  width: 8px;
+
+}
+
+::-webkit-scrollbar-track {
+
+  background: #020617;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  background: #1e293b;
+
+  border-radius: 999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #334155;
+
+}
+
+.dashboard-card {
+
+  transition:
+    all 0.3s ease;
+
+}
+
+.dashboard-card:hover {
+
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 0 30px rgba(59,130,246,0.15);
+
+}
+
+.live-pulse {
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  animation:
+    pulse 1.5s infinite;
+
+}
+
+@keyframes pulse {
+
+  0% {
+
+    transform: scale(1);
+    opacity: 1;
+
+  }
+
+  50% {
+
+    transform: scale(1.4);
+    opacity: 0.5;
+
+  }
+
+  100% {
+
+    transform: scale(1);
+    opacity: 1;
+
+  }
+
+}
+
+.glow-blue {
+
+  box-shadow:
+    0 0 25px rgba(37,99,235,0.18);
+
+}
+
+.glow-purple {
+
+  box-shadow:
+    0 0 25px rgba(124,58,237,0.18);
+
+}
+
+.glow-green {
+
+  box-shadow:
+    0 0 25px rgba(34,197,94,0.18);
+
+}
+
+.glow-orange {
+
+  box-shadow:
+    0 0 25px rgba(245,158,11,0.18);
+
+}
+
+.card-grid {
+
+  display: grid;
+
+  gap: 24px;
+
+}
+
+.fade-in {
+
+  animation:
+    fadeIn 0.6s ease;
+
+}
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+    transform: translateY(12px);
+
+  }
+
+  to {
+
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+
+}
+@media (max-width: 1400px) {
+
+  .summary-grid {
+
+    grid-template-columns:
+      repeat(2,1fr) !important;
+
+  }
+
+}
+
+@media (max-width: 1100px) {
+
+  .analytics-grid,
+  .drawings-grid,
+  .email-grid,
+  .system-grid {
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+  .interaction-grid {
+
+    grid-template-columns:
+      repeat(2,1fr) !important;
+
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .main-layout {
+
+    flex-direction: column !important;
+
+  }
+
+  .sidebar {
+
+    width: 100% !important;
+
+    border-right: none !important;
+
+    border-bottom:
+      1px solid #1e293b !important;
+
+  }
+
+  .header-row {
+
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+
+    gap: 20px !important;
+
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .summary-grid,
+  .interaction-grid {
+
+    grid-template-columns:
+      1fr !important;
+
+  }
+
+  .main-content {
+
+    padding: 20px !important;
+
+  }
+
+  .header-title {
+
+    font-size: 28px !important;
+
+  }
+
+}

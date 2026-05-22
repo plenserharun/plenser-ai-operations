@@ -1,0 +1,10 @@
+{
+  "imap": {
+    "host": "imap.mailsafi.com",
+    "port": 993,
+    "secure": true,
+    "user": "your@email.com",
+    "password": "yourpassword"
+  },
+  "ntfyTopic": "my-mail-alerts"
+}
