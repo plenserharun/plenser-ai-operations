@@ -7,10 +7,33 @@ import {
   ShieldCheck
 } from "lucide-react";
 
-import summary
-from "../../data/emailSummary.json";
+import useLiveSummary
+from "../../hooks/useLiveSummary";
 
 export default function SummaryCards() {
+
+  const summary =
+    useLiveSummary();
+
+  if (!summary) {
+
+    return (
+
+      <div style={{
+
+        color: "white",
+
+        marginBottom: "30px"
+
+      }}>
+
+        Loading live analytics...
+
+      </div>
+
+    );
+
+  }
 
   const cards = [
 
@@ -25,10 +48,7 @@ export default function SummaryCards() {
 
     {
       title: "Drawings Tracked",
-      value:
-        summary.categories.find(
-          c => c.name === "Drawings"
-        )?.count || 0,
+      value: summary.drawings,
 
       icon: <FileText size={26} />,
       color: "#8b5cf6",
@@ -38,7 +58,7 @@ export default function SummaryCards() {
 
     {
       title: "Internal Emails",
-      value: summary.plenserEmails,
+      value: summary.internal,
 
       icon: <ShieldCheck size={26} />,
       color: "#3b82f6",
@@ -48,8 +68,7 @@ export default function SummaryCards() {
 
     {
       title: "Interactions",
-      value:
-        summary.topSenders.length,
+      value: summary.totalEmails,
 
       icon: <Users size={26} />,
       color: "#f59e0b",
@@ -64,6 +83,7 @@ export default function SummaryCards() {
     <div style={{
 
       display: "grid",
+
       gridTemplateColumns:
         "repeat(4,1fr)",
 
@@ -77,6 +97,7 @@ export default function SummaryCards() {
 
         <div
           key={card.title}
+
           style={{
 
             background: "#081225",
@@ -98,6 +119,7 @@ export default function SummaryCards() {
           <div style={{
 
             position: "absolute",
+
             top: "-20px",
             right: "-20px",
 
@@ -128,6 +150,7 @@ export default function SummaryCards() {
               <div style={{
 
                 color: "#94a3b8",
+
                 fontSize: "14px"
 
               }}>
@@ -179,6 +202,7 @@ export default function SummaryCards() {
           <div style={{
 
             marginTop: "20px",
+
             color: "#64748b",
 
             fontSize: "13px",

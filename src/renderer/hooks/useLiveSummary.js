@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function useLiveSummary() {
@@ -5,47 +6,39 @@ export default function useLiveSummary() {
   const [summary,setSummary] =
     useState(null);
 
-  async function loadData() {
+  useEffect(()=>{
 
-    try {
+    async function load() {
 
-      const response =
-        await fetch(
-          "/src/renderer/data/emailSummary.json?t=" +
-          Date.now()
+      try {
+
+        const response =
+          await axios.get(
+            "http://localhost:3000/emails"
+          );
+
+        setSummary(
+          response.data
         );
 
-      const data =
-        await response.json();
+      }
 
-      setSummary(data);
+      catch(error){
 
-    }
+        console.log(
+          error.message
+        );
 
-    catch(error) {
-
-      console.log(
-        "Live sync failed",
-        error
-      );
+      }
 
     }
 
-  }
-
-  useEffect(() => {
-
-    loadData();
+    load();
 
     const interval =
-      setInterval(() => {
+      setInterval(load,5000);
 
-        loadData();
-
-      },5000);
-
-    return () =>
-      clearInterval(interval);
+    return ()=>clearInterval(interval);
 
   },[]);
 
